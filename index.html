@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Random Generator</title>
+    <title>Random Character Generator</title>
     <style>
         body {
             display: flex;
@@ -16,11 +16,108 @@
         .result {
             margin-top: 20px;
         }
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: "Urbanist", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            font-size: 2.5em;
+
+        }
+        h2 {
+            margin-top: 0;
+            font-family: "Playwrite DK Uloopet", cursive;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }
+        h4 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: "Urbanist", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }
+        p {
+            font-family: "Play", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            margin: 0;
+            padding: 3px;
+            font-size: 0.8em;
+        }
+        label {
+            font-family: "Play", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }
+        select {
+            font-family: "Play", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }
+        button {
+            font-family: "Play", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }
+        input[type="range"] {
+            font-family: "Play", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }
+        .clearfix {
+            clear: both;
+        }
+
+        nav{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            font-family: "Play", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            padding: 10px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-family: "Play", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            padding: 10px;
+        }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Uloopet:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Playwrite+DK+Uloopet:wght@100..400&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
 </head>
+<nav>
+    <p>This website is not affiliated with, endorsed, sponsored, 
+        or otherwise approved by IELTS. <br>
+        IELTS is a registered trademark of the British Council, IDP: 
+        IELTS Australia and Cambridge Assessment English.</p>
+</nav>
 <body>
     <div class="container">
+        <h4>Text-to-speech supported</h4>
         <h1>Random Generator</h1>
+        <i><h2>for Cambridge IELTS® Listening Test</h2></i>
         <label for="type">Type:</label>
         <select id="type">
             <option value="postalCode">Postal Code</option>
@@ -59,14 +156,14 @@
             result.innerHTML = "";
 
             if (type === "postalCode") {
-                speak("Postal Code Mode");
+                speak("Postal Code");
                 for (var i = 0; i < amount; i++) {
                     var randomCode = generatePostalCode();
                     result.innerHTML += randomCode + "<br>";
                     speak(randomCode);
                 }
             } else if (type === "phoneNumber") {
-                speak("Phone Number Mode");
+                speak("Phone Number");
                 for (var i = 0; i < amount; i++) {
                     var randomNumber = generatePhoneNumber();
                     result.innerHTML += randomNumber + "<br>";
@@ -144,4 +241,10 @@
         }
     </script>
 </body>
+<footer>
+    <h4>Created by Eric Zhang and Levi Ji, 25 July 2024.</h4>
+    
+    <p>© <a href="https://www.zcstudio.online">ZCSTUDIO</a> 2024, published on <a href="https://github.com/EZLJ/Random-Test-for-IELTS-Listening/">Github</a> under the MIT Licence.</p>
+    <br>
+</footer>
 </html>
