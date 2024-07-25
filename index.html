@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Generator</h1>
+        <label for="type">Type:</label>
+        <select id="type">
+            <option value="postalCode">Postal Code</option>
+            <option value="phoneNumber">Phone Number</option>
+        </select>
+        <label for="amount">Amount:</label>
+        <select id="amount">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+        </select>
+        <button onclick="generateRandom()">Enter</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function generateRandom() {
+            var type = document.getElementById("type").value;
+            var amount = parseInt(document.getElementById("amount").value);
+            var result = document.getElementById("result");
+            result.innerHTML = "";
+
+            if (type === "postalCode") {
+                speak("Postal Code Mode");
+                for (var i = 0; i < amount; i++) {
+                    var randomCode = generatePostalCode();
+                    result.innerHTML += randomCode + "<br>";
+                    speak(randomCode);
+                }
+            } else if (type === "phoneNumber") {
+                speak("Phone Number Mode");
+                for (var i = 0; i < amount; i++) {
+                    var randomNumber = generatePhoneNumber();
+                    result.innerHTML += randomNumber + "<br>";
+                    speak(randomNumber);
+                }
+            }
+        }
+
+        function speak(text) {
+            var speech = new SpeechSynthesisUtterance();
+            speech.text = text;
+            speech.lang = 'en-US'; // Set the language to EN-UK
+            speech.rate = 0.5; // Set the speech rate to 70% of the normal speed
+            speechSynthesis.speak(speech);
+
+            var amt = parseInt(document.getElementById("amount").value);
+            if (amt === 5) {
+                setTimeout(function() {
+                    speechSynthesis.cancel();
+                }, 30000);
+            } else if (amt === 10) {
+                setTimeout(function() {
+                    speechSynthesis.cancel();
+                }, 60000);
+            } else if (amt === 20) {
+                setTimeout(function() {
+                    speechSynthesis.cancel();
+                }, 100000);
+            }
+        }
+
+        function generatePostalCode() {
+            var code = "";
+            var englishChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var numbers = "0123456789";
+
+            for (var i = 0; i < 4; i++) {
+                if (i === 3) {
+                    code += numbers.charAt(Math.floor(Math.random() * numbers.length));
+                    code += " ";
+                } else {
+                    code += englishChars.charAt(Math.floor(Math.random() * englishChars.length));
+                    code += " ";
+                }
+            }
+            code += " - "
+            for (var i = 0; i < 3; i++) {
+                if (i === 0) {
+                    code += numbers.charAt(Math.floor(Math.random() * numbers.length));
+                    code += " ";
+                } else {
+                    code += englishChars.charAt(Math.floor(Math.random() * englishChars.length));
+                    code += " ";
+                }
+            }
+
+            return code;
+        }
+
+        function generatePhoneNumber() {
+            var number = "";
+            var digits = "0123456789";
+
+            for (var i = 0; i < 10; i++) {
+                number += digits.charAt(Math.floor(Math.random() * digits.length));
+
+                number += " ";
+                    
+
+            }
+
+            return number;
+        }
+    </script>
+</body>
+</html>
