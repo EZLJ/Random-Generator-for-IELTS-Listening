@@ -71,15 +71,15 @@
             if (amt === 5) {
                 setTimeout(function() {
                     speechSynthesis.cancel();
-                }, 30000);
+                }, 300000);
             } else if (amt === 10) {
                 setTimeout(function() {
                     speechSynthesis.cancel();
-                }, 60000);
+                }, 600000);
             } else if (amt === 20) {
                 setTimeout(function() {
                     speechSynthesis.cancel();
-                }, 100000);
+                }, 1000000);
             }
         }
 
@@ -117,10 +117,10 @@
 
             for (var i = 0; i < 10; i++) {
                 number += digits.charAt(Math.floor(Math.random() * digits.length));
-
-                number += " ";
+                if (i === 2 || i === 5) {
+                    number += " ";
                     
-
+                }
             }
 
             return number;
