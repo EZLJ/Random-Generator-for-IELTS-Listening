@@ -179,6 +179,7 @@
             speech.rate = 0.3; // Set the speech rate to 70% of the normal speed
             speech.pitch= pitch.value;
             speech.rate = rate.value;
+            speech.localService=true;
             speechSynthesis.speak(speech);
 
             var amt = parseInt(document.getElementById("amount").value);
